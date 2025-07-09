@@ -1,0 +1,124 @@
+<h2 class="text-center mb-4">Farmer Dashboard</h2>
+
+<!-- Toggle Buttons -->
+<div class="d-flex gap-2 justify-content-center mb-3">
+  <button class="btn btn-outline-primary" (click)="toggleSection('profile')">Update Profile</button>
+  <button class="btn btn-outline-success" (click)="toggleSection('publishCrop')">Publish Crop</button>
+  <button class="btn btn-outline-info" (click)="toggleSection('viewCrops')">View Crops</button>
+  <button class="btn btn-outline-warning" (click)="toggleSection('transactions')">View Transactions</button>
+</div>
+
+<!-- Update Farmer Profile -->
+<div *ngIf="showProfile" class="card p-3">
+    <h3>Update Profile</h3>
+    <form (submit)="updateFarmerProfile(); $event.preventDefault()" class="row g-3">
+      <div class="col-md-6">
+        <label class="form-label">Location</label>
+        <input type="text" [(ngModel)]="farmer.location" name="location" class="form-control" placeholder="Enter Location" required />
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Account Number</label>
+        <input type="text" [(ngModel)]="farmer.accountNumber" name="accountNumber" class="form-control" placeholder="Enter Account Number" required />
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Bank IFSC Code</label>
+        <input type="text" [(ngModel)]="farmer.bankIfscCode" name="bankIfscCode" class="form-control" placeholder="Enter Bank IFSC Code" required />
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Update Profile</button>
+      </div>
+    </form>
+  </div>
+  
+
+<!-- Publish New Crop -->
+<div *ngIf="showPublishCrop" class="card p-3 mt-3">
+  <h3 class="mb-3">Publish New Crop</h3>
+  <form (submit)="publishNewCrop(); $event.preventDefault()" class="needs-validation">
+    <div class="mb-3">
+      <label class="form-label">Crop Name</label>
+      <input type="text" [(ngModel)]="newCrop.name" name="cropName" class="form-control" placeholder="Enter Crop Name" required />
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Quantity</label>
+      <input type="number" [(ngModel)]="newCrop.quantity" name="quantity" class="form-control" placeholder="Enter Quantity" min="1" required />
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Price</label>
+      <input type="number" [(ngModel)]="newCrop.price" name="price" class="form-control" placeholder="Enter Price" min="1" required />
+    </div>
+    <button *ngIf="farmerId !== null && farmerId !== undefined && farmerId !== 0" type="submit" class="btn btn-primary">Publish</button>
+  </form>
+</div>
+
+<!-- Display All Crops -->
+<div *ngIf="showViewCrops" class="card p-3 mt-3">
+  <h3>All Listed Crops</h3>
+  <table class="table table-bordered mt-3">
+    <thead class="table-dark">
+      <tr>
+        <th>Crop ID</th>
+        <th>Farmer ID</th>
+        <th>Name</th>
+        <th>Quantity (kg)</th>
+        <th>Price ($)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let crop of crops">
+        <td>{{ crop.cropId }}</td>
+        <td>{{ crop.farmerId }}</td>
+        <td>{{ crop.name }}</td>
+        <td>{{ crop.quantity }}</td>
+        <td>${{ crop.price }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Display Transactions -->
+<div *ngIf="showTransactions" class="card p-3 mt-3">
+  <h3>My Transactions</h3>
+  <form (submit)="loadTransactions(); $event.preventDefault()" class="row g-3">
+    <div class="col-md-6">
+      <label class="form-label">Start Date:</label>
+      <input type="date" [(ngModel)]="startDate" name="startDate" class="form-control" required />
+    </div>
+    <div class="col-md-6">
+      <label class="form-label">End Date:</label>
+      <input type="date" [(ngModel)]="endDate" name="endDate" class="form-control" required />
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-warning" [disabled]="farmerId === 0">Get Transactions</button>
+    </div>
+  </form>
+  
+  <table class="table table-bordered mt-3">
+    <thead class="table-dark">
+      <tr>
+        <th>Transaction ID</th>
+        <th>Dealer ID</th>
+        <th>Farmer ID</th>
+        <th>Crop ID</th>
+        <th>Crop Name</th>
+        <th>Quantity</th>
+        <th>Total Amount</th>
+        <th>Status</th>
+        <th>Transaction Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let transaction of transactions">
+        <td>{{ transaction.transactionId }}</td>
+        <td>{{ transaction.dealerId }}</td>
+        <td>{{ transaction.farmerId }}</td>
+        <td>{{ transaction.cropId }}</td>
+        <td>{{ transaction.cropName }}</td>
+        <td>{{ transaction.quantity }} kg</td>
+        <td>${{ transaction.totalAmount }}</td>
+        <td>{{ transaction.transactionStatus ? 'Completed' : 'Pending' }}</td>
+        <td>{{ transaction.transactionDate | date:'dd/MM/yyyy' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

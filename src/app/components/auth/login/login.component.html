@@ -1,0 +1,62 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card shadow">
+          <div class="card-header bg-primary text-white text-center">
+            <h3>Login</h3>
+          </div>
+          <div class="card-body">
+            <!-- Error Message -->
+            <div *ngIf="errorMessage" class="alert alert-danger text-center">
+              {{ errorMessage }}
+            </div>
+  
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+              <!-- Email Input -->
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  class="form-control"
+                  formControlName="email"
+                  [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"
+                />
+                <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                  <span *ngIf="f['email'].errors?.['required']">Email is required.</span>
+                  <span *ngIf="f['email'].errors?.['email']">Enter a valid email.</span>
+                </div>
+              </div>
+  
+              <!-- Password Input -->
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input
+                  type="password"
+                  id="password"
+                  class="form-control"
+                  formControlName="password"
+                  [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"
+                />
+                <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                  Password is required.
+                </div>
+              </div>
+  
+              <!-- Submit Button -->
+              <button type="submit" class="btn btn-primary w-100" [disabled]="loading">
+                <span *ngIf="loading">
+                  <i class="fa fa-spinner fa-spin"></i> Logging in...
+                </span>
+                <span *ngIf="!loading">Login</span>
+              </button>
+              <div class="text-center mt-3">
+                <p>Don't have an account? <a [routerLink]="'/register'">Register</a></p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,90 @@
+/* General Styles */
+body {
+  background-color: #121212; /* Dark background */
+  color: #e0e0e0; /* Light text color for readability */
+  font-family: 'Poppins', sans-serif; /* Modern, elegant font */
+  line-height: 1.6; /* Better line spacing */
+  margin: 0; /* Remove default margin */
+  padding: 20px; /* Add some padding */
+}
+
+/* Headings */
+h2 {
+  color: #1abc9c; /* Softer teal color for headings */
+  text-align: center; /* Center align for headings */
+  margin: 20px 0; /* Spacing around main heading */
+}
+
+h4 {
+  color: #1abc9c; /* Softer teal color for subheadings */
+  margin: 15px 0; /* Spacing around subheadings */
+}
+
+/* Card Styles */
+.card {
+  background: linear-gradient(145deg, #1e1e1e, #232323); /* Gradient for card background */
+  border-radius: 15px; /* More pronounced rounded corners */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* Enhanced shadow for depth */
+  margin: 20px 0; /* Vertical spacing for cards */
+  padding: 20px; /* Internal padding for content */
+  transition: transform 0.3s; /* Transition for hover effect */
+}
+
+.card:hover {
+  transform: translateY(-4px); /* Lift effect on hover */
+}
+
+/* Table Styles */
+.table {
+  width: 100%; /* Full width for tables */
+  background-color: #2a2a2a; /* Table background */
+  border-collapse: collapse; /* Remove gaps between table cells */
+  color: #e0e0e0; /* Text color in tables */
+}
+
+.table th, .table td {
+  padding: 12px; /* Internal padding */
+  text-align: left; /* Align text to left */
+  border-bottom: 1px solid #555; /* Border beneath cells */
+}
+
+.table th {
+  background-color: #3a3a3a; /* Darker header background */
+  color: #1abc9c; /* Softer teal color for headers */
+  font-weight: bold; /* Bold text for headers */
+}
+
+.text-muted {
+  color: #aaa; /* Slightly muted color for informational text */
+}
+
+/* Spinner Styles */
+.spinner-border {
+  border-color: #1abc9c; /* Spinner color to match theme */
+}
+
+/* Button Styles */
+.btn {
+  border-radius: 5px; /* Rounded buttons */
+  color: #ffffff; /* White text for contrast */
+  padding: 10px 15px; /* Padding for buttons */
+  border: none; /* Remove default border */
+  cursor: pointer; /* Pointer cursor */
+  transition: background-color 0.4s, transform 0.2s; /* Smooth transitions */
+}
+
+.btn-success {
+  background-color: #1abc9c; /* Soft teal for active button */
+}
+
+.btn-danger {
+  background-color: #e74c3c; /* Red color for danger button */
+}
+
+.btn-success:hover {
+  background-color: #16a085; /* Darker teal on hover for active */
+}
+
+.btn-danger:hover {
+  background-color: #c0392b; /* Darker red on hover for danger */
+}

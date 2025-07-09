@@ -1,0 +1,97 @@
+<div class="container mt-4">
+    <h2>Admin Dashboard</h2>
+
+    <!-- Farmers Section -->
+    <div class="card mt-3 p-3">
+        <h4>Farmers</h4>
+
+        <!-- ✅ Loading Indicator -->
+        <div *ngIf="isLoadingFarmers" class="text-center my-3">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading farmers...</span>
+            </div>
+        </div>
+
+        <!-- ✅ Show when no farmers available -->
+        <div *ngIf="!isLoadingFarmers && farmers.length === 0" class="text-center text-muted">
+            No farmers available.
+        </div>
+
+        <!-- ✅ Farmers Table -->
+        <table class="table" *ngIf="!isLoadingFarmers && farmers.length > 0">
+            <thead class="table-dark">
+                <tr>
+                    <th>Farmer ID</th>
+                    <th>Username</th> <!-- ✅ Changed to Username -->
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let farmer of farmers">
+                    <td>{{ farmer.farmerId }}</td>
+                    <td>{{ farmer.username || 'Loading...' }}</td> <!-- ✅ Show Username -->
+                    <td>
+                        <span [class.text-success]="farmer.isActive" [class.text-danger]="!farmer.isActive">
+                            {{ farmer.isActive ? 'Active' : 'Inactive' }}
+                        </span>
+                    </td>
+                    <td>
+                        <button class="btn" 
+                                [ngClass]="farmer.isActive ? 'btn-danger' : 'btn-success'"
+                                (click)="toggleFarmerStatus(farmer)">
+                            {{ farmer.isActive ? 'Deactivate' : 'Activate' }}
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Dealers Section -->
+    <div class="card mt-3 p-3">
+        <h4>Dealers</h4>
+
+        <!-- ✅ Loading Indicator -->
+        <div *ngIf="isLoadingDealers" class="text-center my-3">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading dealers...</span>
+            </div>
+        </div>
+
+        <!-- ✅ Show when no dealers available -->
+        <div *ngIf="!isLoadingDealers && dealers.length === 0" class="text-center text-muted">
+            No dealers available.
+        </div>
+
+        <!-- ✅ Dealers Table -->
+        <table class="table" *ngIf="!isLoadingDealers && dealers.length > 0">
+            <thead class="table-dark">
+                <tr>
+                    <th>Dealer ID</th>
+                    <th>Username</th> <!-- ✅ Changed to Username -->
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let dealer of dealers">
+                    <td>{{ dealer.dealerId }}</td>
+                    <td>{{ dealer.username || 'Loading...' }}</td> <!-- ✅ Show Username -->
+                    <td>
+                        <span [class.text-success]="dealer.isActive" [class.text-danger]="!dealer.isActive">
+                            {{ dealer.isActive ? 'Active' : 'Inactive' }}
+                        </span>
+                    </td>
+                    <td>
+                        <button class="btn" 
+                                [ngClass]="dealer.isActive ? 'btn-danger' : 'btn-success'"
+                                (click)="toggleDealerStatus(dealer)">
+                            {{ dealer.isActive ? 'Deactivate' : 'Activate' }}
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

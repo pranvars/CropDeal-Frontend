@@ -1,0 +1,119 @@
+/* General Styles */
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Headings */
+h2, h3 {
+    color: #1abc9c;
+    text-align: center;
+    margin: 10px 0;
+}
+/* Full Page Dark Theme */
+.container {
+    max-width: 100%;
+    min-height: 100vh; /* Full height */
+    padding: 40px;
+    background: linear-gradient(145deg, #1c1c1c, #292929); /* Slightly lighter */
+    border-radius: 0;
+    box-shadow: none;
+}
+
+/* Card Styles */
+.card {
+    background: linear-gradient(145deg, #1e1e1e, #232323);
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    margin: 20px 0;
+    padding: 20px;
+    transition: transform 0.3s;
+    color: #e0e0e0;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+}
+
+/* Input and Button Styles */
+.form-control {
+    background-color: #2a2a2a;
+    border: 1px solid #555;
+    color: #ffffff;
+    border-radius: 5px;
+    padding: 12px;
+    transition: border 0.3s, box-shadow 0.3s;
+}
+
+.form-control:focus {
+    border-color: #1abc9c;
+    outline: none;
+    box-shadow: 0 0 5px rgba(26, 188, 156, 0.5);
+}
+
+.form-control::placeholder {
+    color: #888;
+}
+
+/* Button Styles */
+.btn {
+    background-color: #1abc9c;
+    border-radius: 25px;
+    color: #ffffff;
+    padding: 12px 25px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.4s, transform 0.2s;
+}
+
+.btn:hover {
+    background-color: #16a085;
+    transform: translateY(-2px);
+}
+
+/* Table Styles */
+.table {
+    width: 100%;
+    background-color: #2a2a2a;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #555;
+    color: #000000;
+}
+
+.table th {
+    background-color: #3a3a3a;
+    color: #1abc9c;
+    font-weight: bold;
+}
+
+/* Additional Styles to Ensure Readability in Other Components */
+.text-muted {
+    color: #aaa;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .card {
+        padding: 15px;
+    }
+    
+    .d-flex {
+        flex-direction: column;
+    }
+
+    .d-flex .btn {
+        margin-bottom: 10px;
+        width: 100%;
+    }
+}

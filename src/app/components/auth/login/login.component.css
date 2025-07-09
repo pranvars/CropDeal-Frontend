@@ -1,0 +1,45 @@
+.card-header {
+    background-color: black !important; /* Change header color to black */
+    color: white !important; /* Ensure text remains readable */
+  }
+  .card-header {
+    background-color: black !important; /* Change header color to black */
+    color: white !important; /* Ensure text remains readable */
+  }
+  
+  .btn-primary {
+    background-color: black !important; /* Change button color to black */
+    border-color: black !important;
+  }
+  
+  .btn-primary:hover {
+    background-color: #333 !important; /* Slightly lighter black on hover */
+    border-color: #333 !important;
+  }
+    
+
+  html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.container {
+    min-height: 100vh; /* Ensure full page height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+footer {
+    margin-top: auto;
+}
+.card {
+  min-height: 450px; /* Increase height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card-body {
+  flex-grow: 1;
+}

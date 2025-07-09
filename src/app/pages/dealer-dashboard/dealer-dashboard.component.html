@@ -1,0 +1,145 @@
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Dealer Dashboard</h2>
+
+  <!-- Toggle Buttons -->
+  <div class="d-flex gap-2 justify-content-center mb-3">
+    <button class="btn btn-outline-primary" (click)="toggleSection('profile')">Update Profile</button>
+    <button class="btn btn-outline-success" (click)="toggleSection('viewCrops')">View Crops</button>
+    <button class="btn btn-outline-warning" (click)="toggleSection('transactions')">View Transactions</button>
+  </div>
+
+  <!-- Update Dealer Profile -->
+  <div *ngIf="showProfile" class="card p-3">
+    <h3>Update Profile</h3>
+    <form (submit)="updateDealerProfile(); $event.preventDefault()" class="row g-3">
+      <div class="col-md-6">
+        <label class="form-label">Location</label>
+        <input type="text" [(ngModel)]="dealer.location" name="location" class="form-control" placeholder="Enter Location" required />
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Account Number</label>
+        <input type="text" [(ngModel)]="dealer.accountNumber" name="accountNumber" class="form-control" placeholder="Enter Account Number" required />
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Bank IFSC Code</label>
+        <input type="text" [(ngModel)]="dealer.bankIfscCode" name="bankIfscCode" class="form-control" placeholder="Enter Bank IFSC Code" required />
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Update Profile</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- View Available Crops -->
+  <div *ngIf="showViewCrops" class="card p-3 mt-3">
+    <h3>Available Crops</h3>
+    <table class="table table-bordered mt-3">
+      <thead class="table-dark">
+        <tr>
+          <th>Crop ID</th>
+          <th>Farmer ID</th>
+          <th>Name</th>
+          <th>Quantity (kg)</th>
+          <th>Price ($)</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let crop of crops">
+          <td>{{ crop.cropId }}</td>
+          <td>{{ crop.farmerId }}</td>
+          <td>{{ crop.name }}</td>
+          <td>{{ crop.quantity }}</td>
+          <td>${{ crop.price }}</td>
+          <td>
+            <button class="btn btn-success" (click)="buyCrop(crop)">Buy Crop</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- View Transactions -->
+  <div *ngIf="showTransactions" class="card p-3 mt-3">
+    <h3>My Transactions</h3>
+    <form (submit)="loadTransactions(); $event.preventDefault()" class="row g-3">
+      <div class="col-md-6">
+        <label class="form-label">Start Date:</label>
+        <input type="date" [(ngModel)]="startDate" name="startDate" class="form-control" required />
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">End Date:</label>
+        <input type="date" [(ngModel)]="endDate" name="endDate" class="form-control" required />
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-warning" [disabled]="dealerId === 0">Get Transactions</button>
+      </div>
+    </form>
+
+    <!-- Transactions Table -->
+    <table class="table table-bordered mt-3" *ngIf="transactions && transactions.length > 0">
+      <thead class="table-dark">
+        <tr>
+          <th>Transaction ID</th>
+          <th>Dealer ID</th>
+          <th>Farmer ID</th>
+          <th>Crop ID</th>
+          <th>Crop Name</th>
+          <th>Quantity</th>
+          <th>Total Amount</th>
+          <th>Status</th>
+          <th>Transaction Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let transaction of transactions">
+          <td>{{ transaction.transactionId }}</td>
+          <td>{{ transaction.dealerId }}</td>
+          <td>{{ transaction.farmerId }}</td>
+          <td>{{ transaction.cropId }}</td>
+          <td>{{ transaction.cropName }}</td>
+          <td>{{ transaction.quantity }} kg</td>
+          <td>${{ transaction.totalAmount }}</td>
+          <td>{{ transaction.transactionStatus ? 'Completed' : 'Pending' }}</td>
+          <td>{{ transaction.transactionDate | date:'dd/MM/yyyy' }}</td>
+          <td>
+            <button class="btn btn-info" *ngIf="transaction" (click)="openReceiptModal(transaction)" data-bs-toggle="modal" data-bs-target="#receiptModal">
+              Print Receipt
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Message when no transactions are found -->
+    <p *ngIf="transactions && transactions.length === 0" class="text-center text-muted">No transactions found.</p>
+  </div>
+</div>
+
+<!-- Print Receipt Modal to popup reciept-->
+<div class="modal fade" id="receiptModal" tabindex="-1" aria-labelledby="receiptModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="receiptModalLabel">Transaction Receipt</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" *ngIf="selectedTransaction">
+        <h3 class="text-center">Crop Deal Receipt</h3>
+        <hr />
+        <p><strong>Transaction ID:</strong> {{ selectedTransaction.transactionId }}</p>
+        <p><strong>Dealer ID:</strong> {{ selectedTransaction.dealerId }}</p>
+        <p><strong>Farmer ID:</strong> {{ selectedTransaction.farmerId }}</p>
+        <p><strong>Crop Name:</strong> {{ selectedTransaction.cropName }}</p>
+        <p><strong>Quantity:</strong> {{ selectedTransaction.quantity }} kg</p>
+        <p><strong>Total Amount:</strong> ${{ selectedTransaction.totalAmount }}</p>
+        <p><strong>Status:</strong> {{ selectedTransaction.transactionStatus ? 'Completed' : 'Pending' }}</p>
+        <p><strong>Transaction Date:</strong> {{ selectedTransaction.transactionDate | date:'dd/MM/yyyy' }}</p>
+      </div>
+      <div class="modal-body text-center text-muted" *ngIf="!selectedTransaction">
+        No transaction selected.
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,99 @@
+<div class="register-container">
+  <h2 class="text-center my-4">Register</h2>
+
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <!-- Full Name -->
+    <div class="mb-3">
+      <label class="form-label">Userame</label>
+      <input type="text" class="form-control" formControlName="username" placeholder="Enter your full name" />
+      <div class="text-danger" *ngIf="submitted && f['username'].errors?.required">
+        Username is required.
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="mb-3">
+      <label class="form-label">Email</label>
+      <input type="email" class="form-control" formControlName="email" placeholder="Enter your email" />
+      <div class="text-danger" *ngIf="submitted && f['email'].errors?.required">
+        Email is required.
+      </div>
+      <div class="text-danger" *ngIf="submitted && f['email'].errors?.email">
+        Enter a valid email.
+      </div>
+    </div>
+
+    <!-- Password -->
+    <div class="mb-3">
+      <label class="form-label">Password</label>
+      <input type="password" class="form-control" formControlName="password" placeholder="Create a password" />
+      <div class="text-danger" *ngIf="submitted && f['password'].errors?.required">
+        Password is required.
+      </div>
+      <div class="text-danger" *ngIf="submitted && f['password'].errors?.minlength">
+        Password must be at least 6 characters.
+      </div>
+    </div>
+
+    <!-- Register as -->
+    <div class="mb-3">
+      <label class="form-label">Register as</label>
+      <div>
+        <input type="radio" formControlName="role" value="Farmer" id="farmer" />
+        <label for="farmer">Farmer</label>
+      </div>
+      <div>
+        <input type="radio" formControlName="role" value="Dealer" id="dealer" />
+        <label for="dealer">Dealer</label>
+      </div>
+      <div class="text-danger" *ngIf="submitted && f['role'].errors?.required">
+        Please select a role.
+      </div>
+    </div>
+
+    <!-- Location -->
+    <div class="mb-3">
+      <label class="form-label">Location</label>
+      <input type="text" class="form-control" formControlName="location" placeholder="Enter your location" />
+      <div class="text-danger" *ngIf="submitted && f['location'].errors?.required">
+        Location is required.
+      </div>
+    </div>
+
+    <!-- Account Number -->
+    <div class="mb-3">
+      <label class="form-label">Account Number</label>
+      <input type="text" class="form-control" formControlName="accountNumber" placeholder="Enter your account number" />
+      <div class="text-danger" *ngIf="submitted && f['accountNumber'].errors?.required">
+        Account Number is required.
+      </div>
+      <div class="text-danger" *ngIf="submitted && f['accountNumber'].errors?.pattern">
+        Account Number must be between 9 and 18 digits.
+      </div>
+    </div>
+
+    <!-- IFSC Code (Max 20 characters) -->
+    <div class="mb-3">
+      <label class="form-label">Bank IFSC Code</label>
+      <input type="text" class="form-control" formControlName="bankIfscCode" maxlength="20" placeholder="Enter IFSC Code" />
+      <div class="text-danger" *ngIf="submitted && f['bankIfscCode'].errors?.required">
+        IFSC Code is required.
+      </div>
+      <div class="text-danger" *ngIf="submitted && f['bankIfscCode'].errors?.maxlength">
+        IFSC Code must be 20 characters or less.
+      </div>
+    </div>
+
+    <!-- Error Message -->
+    <div *ngIf="errorMessage" class="alert alert-danger text-center">
+      {{ errorMessage }}
+    </div>
+
+    <!-- Register Button -->
+    <div class="text-center">
+      <button type="submit" class="btn btn-success" [disabled]="loading">
+        {{ loading ? 'Registering...' : 'Register' }}
+      </button>
+    </div>
+  </form>
+</div>

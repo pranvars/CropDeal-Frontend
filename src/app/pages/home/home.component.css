@@ -1,0 +1,169 @@
+/* General Styles */
+html, body {
+    background-color: #121212; /* Dark background */
+    color: #e0e0e0;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.7;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+/* Full Page Dark Theme */
+.container {
+    max-width: 100%;
+    min-height: 100vh; /* Full height */
+    padding: 40px;
+    background: linear-gradient(145deg, #1c1c1c, #292929); /* Slightly lighter */
+    border-radius: 0;
+    box-shadow: none;
+}
+
+/* Header/Nav Bar */
+nav {
+    background-color: #1e1e1e;
+    padding: 15px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+nav a {
+    color: #1abc9c;
+    font-weight: bold;
+    text-decoration: none;
+    margin-right: 20px;
+    transition: color 0.3s ease-in-out;
+}
+
+nav a:hover {
+    color: #16a085;
+    text-shadow: 0 0 8px rgba(26, 188, 156, 0.5);
+}
+
+/* Headings */
+h1 {
+    color: #1abc9c;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    text-shadow: 0 0 8px rgba(26, 188, 156, 0.3);
+    text-align: center; /* Center headings */
+}
+
+h2, h3 {
+    color: #1abc9c;
+    margin: 15px 0;
+    text-shadow: 0 0 5px rgba(26, 188, 156, 0.2);
+}
+
+/* Lead Text */
+.lead {
+    font-size: 1.2rem;
+    color: #ddd; /* Increased contrast */
+    margin-bottom: 30px;
+    text-align: center; /* Center lead text */
+}
+
+/* Circular Image Styling */
+.img-fluid {
+    width: 150px; /* Fixed width */
+    height: 150px; /* Fixed height */
+    border-radius: 50%; /* Circular shape */
+    object-fit: cover; /* Ensure image fills circle */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    display: block;
+    margin: 0 auto; /* Center images */
+}
+
+.img-fluid:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 255, 170, 0.5);
+}
+
+/* Button Styles */
+.btn {
+    background-color: #1abc9c;
+    border-radius: 25px;
+    color: #ffffff;
+    padding: 12px 25px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.4s, transform 0.2s, box-shadow 0.3s ease-in-out;
+    display: inline-block;
+    margin-top: 10px;
+    box-shadow: 0 4px 10px rgba(26, 188, 156, 0.3);
+}
+
+.btn:hover {
+    background-color: #16a085;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(26, 188, 156, 0.5);
+}
+
+/* Footer */
+.footer {
+    background-color: #1e1e1e;
+    color: #bbb; /* Brighter text */
+    padding: 15px;
+    text-align: center;
+    font-size: 0.9rem;
+    margin-top: 20px;
+}
+
+.footer a {
+    color: #1abc9c;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.footer a:hover {
+    color: #16a085;
+    text-decoration: underline;
+}
+
+/* Increase Readability */
+p {
+    color: #ddd; /* Slightly brighter */
+    font-size: 1.1rem;
+    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.1);
+    text-align: center; /* Center align paragraphs */
+}
+
+/* Spacing and Alignment */
+.section {
+    padding: 60px 0;
+    text-align: center; /* Center content */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    .row {
+        flex-direction: column;
+    }
+
+    .col-md-6 {
+        margin-bottom: 20px;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .lead {
+        font-size: 1rem;
+    }
+
+    .img-fluid {
+        width: 120px; /* Slightly smaller on mobile */
+        height: 120px;
+    }
+}

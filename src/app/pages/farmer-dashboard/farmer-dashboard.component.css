@@ -1,0 +1,110 @@
+/* General Styles */
+body {
+    background-color: #121212; /* Dark background */
+    color: #000000; /* Light text color for readability */
+    font-family: 'Poppins', sans-serif; /* Modern, elegant font */
+    line-height: 1.6; /* Better line spacing */
+    margin: 0; /* Remove default margin */
+    padding: 20px; /* Add some padding */
+}
+
+/* Headings */
+h2, h3 {
+    color: #1abc9c; /* Softer teal color for headings */
+    text-align: center;
+    margin: 10px 0; /* Spacing around headings */
+}
+
+/* Card Styles */
+.card {
+    background: linear-gradient(145deg, #1e1e1e, #232323); /* Gradient for card background */
+    border-radius: 15px; /* More pronounced rounded corners */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* Enhanced shadow for depth */
+    margin: 20px 0; /* Vertical spacing for cards */
+    padding: 20px; /* Internal padding for content */
+    transition: transform 0.3s; /* Transition for hover effect */
+    color: #e0e0e0; /* Ensure card text color is light */
+}
+
+.card:hover {
+    transform: translateY(-4px); /* Lift effect on hover for interactivity */
+}
+
+/* Input and Button Styles */
+.form-control {
+    background-color: #2a2a2a; /* Input background color */
+    border: 1px solid #555; /* Border color for inputs */
+    color: #ffffff; /* Text color in inputs */
+    border-radius: 5px; /* Rounded input fields */
+    padding: 12px; /* Padding within inputs */
+    transition: border 0.3s, box-shadow 0.3s; /* Transitions for focus */
+}
+
+.form-control:focus {
+    border-color: #1abc9c; /* Border color on focus */
+    outline: none; /* Remove outline */
+    box-shadow: 0 0 5px rgba(26, 188, 156, 0.5); /* Shadow effect on focus */
+}
+
+.form-control::placeholder {
+    color: #888; /* Placeholder color */
+}
+
+/* Button Styles */
+.btn {
+    background-color: #1abc9c; /* Softer Primary Button Color */
+    border-radius: 25px; /* Rounded buttons */
+    color: #ffffff; /* White text color for contrast */
+    padding: 12px 25px; /* Add padding */
+    border: none; /* Remove default border */
+    cursor: pointer; /* Pointer cursor */
+    font-weight: bold; /* Bold text for buttons */
+    text-transform: uppercase; /* Uppercase text */
+    transition: background-color 0.4s, transform 0.2s; /* Smooth transitions */
+}
+
+.btn:hover {
+    background-color: #16a085; /* Darker teal on hover for contrast */
+    transform: translateY(-2px); /* Lift effect on hover */
+}
+
+/* Table Styles */
+.table {
+    width: 100%; /* Full width for tables */
+    background-color: #2a2a2a; /* Table background */
+    border-collapse: collapse; /* Remove gaps between table cells */
+}
+
+.table th, .table td {
+    padding: 12px; /* Internal padding */
+    text-align: left; /* Align text to the left */
+    border-bottom: 1px solid #555; /* Border beneath cells */
+    color: #070707; /* Ensure table text color is light */
+}
+
+.table th {
+    background-color: #3a3a3a; /* Darker header background */
+    color: #1abc9c; /* Softer teal color for headers */
+    font-weight: bold; /* Bold text for headers */
+}
+
+/* Additional Styles to Ensure Readability in Other Components */
+.text-muted {
+    color: #aaa; /* A muted color for less important text */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .card {
+        padding: 15px; /* Reduced padding on smaller screens */
+    }
+    
+    .d-flex {
+        flex-direction: column; /* Stack buttons vertically */
+    }
+
+    .d-flex .btn {
+        margin-bottom: 10px; /* Space between buttons */
+        width: 100%; /* Full width for buttons */
+    }
+}

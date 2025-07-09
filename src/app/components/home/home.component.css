@@ -1,0 +1,63 @@
+/* Home Component Styling */
+
+/* Center content */
+.container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+/* Style the sections */
+.col-md-6 {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.col-md-6:hover {
+    transform: scale(1.05);
+}
+
+/* Style images */
+img {
+    width: 100%;
+    max-height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Headings */
+h3 {
+    margin-top: 15px;
+    color: #28a745;
+    font-weight: bold;
+}
+
+/* Paragraph text */
+p {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Register buttons */
+a.btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.3s ease-in-out;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}

@@ -168,5 +168,5 @@ Pull requests are welcome. Please open issues to suggest features or report bugs
 
 ## 📬 Contact
 
-- Created by [Your Name](https://github.com/your-username)
-- For questions, email: your.email@example.com
+- Created by [Pranav Varshney](https://github.com/claudikt)
+- For questions, email: prnvvarshney@gmail.com

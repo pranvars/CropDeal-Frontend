@@ -1,59 +1,172 @@
-# Cdfrontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.7.
+# 🌾 CropDeal Frontend
 
-## Development server
+This is the **Angular-based frontend** for the CropDeal project — a platform that connects **Farmers** and **Dealers** for transparent crop transactions, profile management, and crop trading.
 
-To start a local development server, run:
+---
 
-```bash
-ng serve
+## 🖥️ Tech Stack
+
+- **Frontend Framework**: Angular 16+
+- **Styling**: Bootstrap 5
+- **State Management**: Services with RxJS
+- **Routing**: Angular Router (via `app.routes.ts`)
+- **Module Setup**: Custom configuration using `app.config.ts`
+
+---
+
+## 📦 Features Overview
+
+### 👤 Authentication
+- Signup with roles: Farmer / Dealer
+- Login and route-based role redirection
+- JWT token stored for authorized API calls
+
+### 🌱 Farmer Dashboard
+- **View & Update Profile**
+- **Publish Crops**
+- **View Published Crops**
+- **Track Transactions**
+
+### 🛒 Dealer Dashboard
+- **View & Update Profile**
+- **Browse All Crops**
+- **Buy Crops**
+- **View Transactions**
+- **Print Receipt via Modal**
+
+---
+
+## 🧰 Project Structure
+
+```
+CropDeal-Frontend/
+├── src/
+│   ├── app/
+│   │   ├── auth/
+│   │   ├── farmer/
+│   │   ├── dealer/
+│   │   ├── admin/
+│   │   ├── services/
+│   │   ├── models/
+│   │   ├── shared/
+│   │   ├── app.routes.ts
+│   │   └── app.config.ts
+│   └── assets/
+├── angular.json
+├── package.json
+└── README.md
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## 🚀 Getting Started
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### 📝 Prerequisites
 
-```bash
-ng generate component component-name
-```
+- [Node.js (18+)](https://nodejs.org/)
+- [Angular CLI](https://angular.io/cli)
+- Backend APIs running locally (or hosted)
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### ⚙️ Installation
 
-```bash
-ng generate --help
-```
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/your-username/cropdeal-frontend.git
+   cd cropdeal-frontend
+   ```
 
-## Building
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-To build the project run:
+3. **Run the Angular app**
+   ```bash
+   ng serve
+   ```
 
-```bash
-ng build
-```
+4. Visit `http://localhost:4200` in your browser.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+---
 
-## Running unit tests
+## 🔐 Authentication Flow
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+- Signup page collects:
+  - Username, Email, Password, Role, Location
+  - Bank Details (Account No., IFSC Code)
+- On signup:
+  - User is created in backend Auth DB
+  - Additional details stored in respective Farmer/Dealer DB
+- After login:
+  - JWT token stored in localStorage
+  - Role-based route redirection (e.g., to `/farmer-dashboard` or `/dealer-dashboard`)
 
-```bash
-ng test
-```
+---
 
-## Running end-to-end tests
+## 📋 Forms Used
 
-For end-to-end (e2e) testing, run:
+- **Reactive Forms** and **Template-Driven Forms**
+- Bootstrap-based styling
+- Form validations with user feedback
 
-```bash
-ng e2e
-```
+---
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## 🧠 Data Binding & Sharing
 
-## Additional Resources
+- Uses `ngModel` for two-way binding
+- Services used to:
+  - Share data between components
+  - Maintain user session
+  - Handle API calls with authorization headers
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+---
+
+## 🧪 Testing & Debugging
+
+- Unit tests can be added using:
+  - Jasmine
+  - Karma
+- You can run tests with:
+  ```bash
+  ng test
+  ```
+
+---
+
+## 📬 API Integration
+
+- API base URLs configured in environment files
+- Services handle:
+  - Token injection
+  - HTTP request headers
+  - Error handling
+
+---
+
+## 🖼️ UI Preview (Optional)
+
+You can include screenshots of:
+- Login Page
+- Farmer Dashboard
+- Dealer Dashboard
+- Transaction Table + Modal
+
+---
+
+## 📃 License
+
+This project is licensed under the MIT License.
+
+---
+
+## 🤝 Contributing
+
+Pull requests are welcome. Please open issues to suggest features or report bugs.
+
+---
+
+## 📬 Contact
+
+- Created by [Your Name](https://github.com/your-username)
+- For questions, email: your.email@example.com

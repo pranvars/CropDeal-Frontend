@@ -144,16 +144,6 @@ CropDeal-Frontend/
 
 ---
 
-## 🖼️ UI Preview (Optional)
-
-You can include screenshots of:
-- Login Page
-- Farmer Dashboard
-- Dealer Dashboard
-- Transaction Table + Modal
-
----
-
 ## 📃 License
 
 This project is licensed under the MIT License.
